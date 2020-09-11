@@ -1,0 +1,28 @@
+{
+    "name": "WebCV",
+    "version": "1.0.0",
+    "description": "Simple app for generating a web-based CV from a JSON file.",
+    "main": "webcv.js",
+    "scripts": {
+        "dev": "parcel index.html assets/**/*",
+        "build": "parcel build /js/app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gavhanna/WebCV.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/gavhanna/WebCV/issues"
+    },
+    "homepage": "https://github.com/gavhanna/WebCV#readme",
+    "devDependencies": {
+        "@babel/core": "^7.11.6",
+        "@babel/plugin-transform-runtime": "^7.11.5",
+        "parcel-bundler": "^1.12.4",
+        "parcel-plugin-static-files-copy": "^2.5.0"
+    }
+}
