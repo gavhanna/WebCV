@@ -2,6 +2,9 @@
     class CV {
         constructor(cvURI) {
             this._initCV(cvURI);
+            this.el = {};
+            this.el.container = document.createElement('div');
+            document.querySelector('body').appendChild(this.el.container);
         }
 
         async _initCV(cvURI) {
