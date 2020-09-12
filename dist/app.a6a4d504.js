@@ -117,7 +117,266 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
+})({"node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck;
+},{}],"node_modules/@babel/runtime/helpers/createClass.js":[function(require,module,exports) {
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+module.exports = _createClass;
+},{}],"node_modules/@babel/runtime/helpers/setPrototypeOf.js":[function(require,module,exports) {
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+module.exports = _setPrototypeOf;
+},{}],"node_modules/@babel/runtime/helpers/inherits.js":[function(require,module,exports) {
+var setPrototypeOf = require("./setPrototypeOf");
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+},{"./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js"}],"node_modules/@babel/runtime/helpers/typeof.js":[function(require,module,exports) {
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    module.exports = _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    module.exports = _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+module.exports = _typeof;
+},{}],"node_modules/@babel/runtime/helpers/assertThisInitialized.js":[function(require,module,exports) {
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+module.exports = _assertThisInitialized;
+},{}],"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":[function(require,module,exports) {
+var _typeof = require("../helpers/typeof");
+
+var assertThisInitialized = require("./assertThisInitialized");
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+},{"../helpers/typeof":"node_modules/@babel/runtime/helpers/typeof.js","./assertThisInitialized":"node_modules/@babel/runtime/helpers/assertThisInitialized.js"}],"node_modules/@babel/runtime/helpers/getPrototypeOf.js":[function(require,module,exports) {
+function _getPrototypeOf(o) {
+  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+module.exports = _getPrototypeOf;
+},{}],"node_modules/@babel/runtime/helpers/isNativeFunction.js":[function(require,module,exports) {
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+
+module.exports = _isNativeFunction;
+},{}],"node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js":[function(require,module,exports) {
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+
+  try {
+    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+module.exports = _isNativeReflectConstruct;
+},{}],"node_modules/@babel/runtime/helpers/construct.js":[function(require,module,exports) {
+var setPrototypeOf = require("./setPrototypeOf");
+
+var isNativeReflectConstruct = require("./isNativeReflectConstruct");
+
+function _construct(Parent, args, Class) {
+  if (isNativeReflectConstruct()) {
+    module.exports = _construct = Reflect.construct;
+  } else {
+    module.exports = _construct = function _construct(Parent, args, Class) {
+      var a = [null];
+      a.push.apply(a, args);
+      var Constructor = Function.bind.apply(Parent, a);
+      var instance = new Constructor();
+      if (Class) setPrototypeOf(instance, Class.prototype);
+      return instance;
+    };
+  }
+
+  return _construct.apply(null, arguments);
+}
+
+module.exports = _construct;
+},{"./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js","./isNativeReflectConstruct":"node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js"}],"node_modules/@babel/runtime/helpers/wrapNativeSuper.js":[function(require,module,exports) {
+var getPrototypeOf = require("./getPrototypeOf");
+
+var setPrototypeOf = require("./setPrototypeOf");
+
+var isNativeFunction = require("./isNativeFunction");
+
+var construct = require("./construct");
+
+function _wrapNativeSuper(Class) {
+  var _cache = typeof Map === "function" ? new Map() : undefined;
+
+  module.exports = _wrapNativeSuper = function _wrapNativeSuper(Class) {
+    if (Class === null || !isNativeFunction(Class)) return Class;
+
+    if (typeof Class !== "function") {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    if (typeof _cache !== "undefined") {
+      if (_cache.has(Class)) return _cache.get(Class);
+
+      _cache.set(Class, Wrapper);
+    }
+
+    function Wrapper() {
+      return construct(Class, arguments, getPrototypeOf(this).constructor);
+    }
+
+    Wrapper.prototype = Object.create(Class.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    return setPrototypeOf(Wrapper, Class);
+  };
+
+  return _wrapNativeSuper(Class);
+}
+
+module.exports = _wrapNativeSuper;
+},{"./getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js","./isNativeFunction":"node_modules/@babel/runtime/helpers/isNativeFunction.js","./construct":"node_modules/@babel/runtime/helpers/construct.js"}],"src/components/Header.js":[function(require,module,exports) {
+"use strict";
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _wrapNativeSuper2 = _interopRequireDefault(require("@babel/runtime/helpers/wrapNativeSuper"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+var template = document.createElement('template');
+template.innerHTML = "\n    <style>\n        h1 {\n            color: coral;\n        }\n    </style>\n\n    <header>\n        <h1></h1>\n        <p></p>\n    </header>\n";
+
+var Header = /*#__PURE__*/function (_HTMLElement) {
+  (0, _inherits2.default)(Header, _HTMLElement);
+
+  var _super = _createSuper(Header);
+
+  function Header(data) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Header);
+    _this = _super.call(this);
+    console.log(_this.getAttribute('cvTitle'));
+
+    _this.attachShadow({
+      mode: 'open'
+    });
+
+    _this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    return _this;
+  }
+
+  (0, _createClass2.default)(Header, [{
+    key: "_renderName",
+    value: function _renderName() {
+      this.shadowRoot.querySelector('h1').innerText = "".concat(this.data.firstName, " ").concat(this.data.middleName ? this.data.middleName + ' ' + this.data.lastName : this.data.lastName);
+    }
+  }, {
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      if (this.data) {
+        this._renderName();
+
+        this.shadowRoot.querySelector('p').innerText = this.data.description;
+      }
+    }
+  }]);
+  return Header;
+}( /*#__PURE__*/(0, _wrapNativeSuper2.default)(HTMLElement));
+
+window.customElements.define('cv-header', Header);
+},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","@babel/runtime/helpers/wrapNativeSuper":"node_modules/@babel/runtime/helpers/wrapNativeSuper.js"}],"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 var define;
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -909,203 +1168,12 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
-},{}],"node_modules/@babel/runtime/helpers/classCallCheck.js":[function(require,module,exports) {
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-},{}],"node_modules/@babel/runtime/helpers/createClass.js":[function(require,module,exports) {
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-},{}],"node_modules/@babel/runtime/helpers/setPrototypeOf.js":[function(require,module,exports) {
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-module.exports = _setPrototypeOf;
-},{}],"node_modules/@babel/runtime/helpers/inherits.js":[function(require,module,exports) {
-var setPrototypeOf = require("./setPrototypeOf");
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-},{"./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js"}],"node_modules/@babel/runtime/helpers/typeof.js":[function(require,module,exports) {
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-
-module.exports = _typeof;
-},{}],"node_modules/@babel/runtime/helpers/assertThisInitialized.js":[function(require,module,exports) {
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-module.exports = _assertThisInitialized;
-},{}],"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js":[function(require,module,exports) {
-var _typeof = require("../helpers/typeof");
-
-var assertThisInitialized = require("./assertThisInitialized");
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-},{"../helpers/typeof":"node_modules/@babel/runtime/helpers/typeof.js","./assertThisInitialized":"node_modules/@babel/runtime/helpers/assertThisInitialized.js"}],"node_modules/@babel/runtime/helpers/getPrototypeOf.js":[function(require,module,exports) {
-function _getPrototypeOf(o) {
-  module.exports = _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-module.exports = _getPrototypeOf;
-},{}],"node_modules/@babel/runtime/helpers/isNativeFunction.js":[function(require,module,exports) {
-function _isNativeFunction(fn) {
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-
-module.exports = _isNativeFunction;
-},{}],"node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js":[function(require,module,exports) {
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-module.exports = _isNativeReflectConstruct;
-},{}],"node_modules/@babel/runtime/helpers/construct.js":[function(require,module,exports) {
-var setPrototypeOf = require("./setPrototypeOf");
-
-var isNativeReflectConstruct = require("./isNativeReflectConstruct");
-
-function _construct(Parent, args, Class) {
-  if (isNativeReflectConstruct()) {
-    module.exports = _construct = Reflect.construct;
-  } else {
-    module.exports = _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) setPrototypeOf(instance, Class.prototype);
-      return instance;
-    };
-  }
-
-  return _construct.apply(null, arguments);
-}
-
-module.exports = _construct;
-},{"./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js","./isNativeReflectConstruct":"node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js"}],"node_modules/@babel/runtime/helpers/wrapNativeSuper.js":[function(require,module,exports) {
-var getPrototypeOf = require("./getPrototypeOf");
-
-var setPrototypeOf = require("./setPrototypeOf");
-
-var isNativeFunction = require("./isNativeFunction");
-
-var construct = require("./construct");
-
-function _wrapNativeSuper(Class) {
-  var _cache = typeof Map === "function" ? new Map() : undefined;
-
-  module.exports = _wrapNativeSuper = function _wrapNativeSuper(Class) {
-    if (Class === null || !isNativeFunction(Class)) return Class;
-
-    if (typeof Class !== "function") {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-
-    if (typeof _cache !== "undefined") {
-      if (_cache.has(Class)) return _cache.get(Class);
-
-      _cache.set(Class, Wrapper);
-    }
-
-    function Wrapper() {
-      return construct(Class, arguments, getPrototypeOf(this).constructor);
-    }
-
-    Wrapper.prototype = Object.create(Class.prototype, {
-      constructor: {
-        value: Wrapper,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    return setPrototypeOf(Wrapper, Class);
-  };
-
-  return _wrapNativeSuper(Class);
-}
-
-module.exports = _wrapNativeSuper;
-},{"./getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","./setPrototypeOf":"node_modules/@babel/runtime/helpers/setPrototypeOf.js","./isNativeFunction":"node_modules/@babel/runtime/helpers/isNativeFunction.js","./construct":"node_modules/@babel/runtime/helpers/construct.js"}],"src/components/header.js":[function(require,module,exports) {
+},{}],"src/components/CV.js":[function(require,module,exports) {
 "use strict";
+
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
 
@@ -1125,18 +1193,21 @@ function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflec
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
+require('./Header');
+
 var template = document.createElement('template');
-template.innerHTML = "\n    <style>\n        h1 {\n            color: coral;\n        }\n    </style>\n\n    <header>\n        <h1></h1>\n        <p></p>\n    </header>\n";
+template.innerHTML = "\n    <article>\n        \n    </article>\n";
 
-var Header = /*#__PURE__*/function (_HTMLElement) {
-  (0, _inherits2.default)(Header, _HTMLElement);
+var CV = /*#__PURE__*/function (_HTMLElement) {
+  (0, _inherits2.default)(CV, _HTMLElement);
 
-  var _super = _createSuper(Header);
+  var _super = _createSuper(CV);
 
-  function Header(data) {
+  function CV(cvURI) {
     var _this;
 
-    (0, _classCallCheck2.default)(this, Header);
+    var parentElement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'body';
+    (0, _classCallCheck2.default)(this, CV);
     _this = _super.call(this);
 
     _this.attachShadow({
@@ -1145,82 +1216,78 @@ var Header = /*#__PURE__*/function (_HTMLElement) {
 
     _this.shadowRoot.appendChild(template.content.cloneNode(true));
 
+    console.log(_this.attributes.uri.value);
     return _this;
   }
 
-  (0, _createClass2.default)(Header, [{
-    key: "connectedCallback",
-    value: function connectedCallback() {
-      this.shadowRoot.querySelector('h1').innerText = "".concat(this.data.firstName, " ").concat(this.data.middleName ? this.data.middleName + ' ' + this.data.lastName : this.data.lastName);
-      this.shadowRoot.querySelector('p').innerText = this.data.description;
-    }
-  }]);
-  return Header;
-}( /*#__PURE__*/(0, _wrapNativeSuper2.default)(HTMLElement));
-
-window.customElements.define('cv-header', Header);
-},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","@babel/runtime/helpers/wrapNativeSuper":"node_modules/@babel/runtime/helpers/wrapNativeSuper.js"}],"src/app.js":[function(require,module,exports) {
-"use strict";
-
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
-var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
-
-var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-require('./components/header');
-
-var CV = /*#__PURE__*/function () {
-  function CV(cvURI) {
-    var parentElement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'body';
-    (0, _classCallCheck2.default)(this, CV);
-    this.parentElement = parentElement;
-
-    this._importCVData(cvURI);
-
-    this.el = {};
-    this.el.container = document.createElement('div');
-  }
-
   (0, _createClass2.default)(CV, [{
-    key: "_importCVData",
+    key: "connectedCallback",
     value: function () {
-      var _importCVData2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(cvURI) {
-        var cvData;
+      var _connectedCallback = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return fetch(cvURI);
+                _context.next = 2;
+                return this._importCVData(this.attributes.uri.value);
 
-              case 3:
-                cvData = _context.sent;
-                _context.next = 6;
-                return cvData.json();
-
-              case 6:
-                this.content = _context.sent;
-                this.render();
-                _context.next = 13;
-                break;
-
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](0);
-                console.error(_context.t0);
-
-              case 13:
+              case 2:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 10]]);
+        }, _callee, this);
+      }));
+
+      function connectedCallback() {
+        return _connectedCallback.apply(this, arguments);
+      }
+
+      return connectedCallback;
+    }()
+  }, {
+    key: "attachHeader",
+    value: function attachHeader() {
+      var header = document.createElement('cv-header');
+      header.data = this.content.title;
+      this.shadowRoot.querySelector('article').appendChild(header);
+    }
+  }, {
+    key: "_importCVData",
+    value: function () {
+      var _importCVData2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(cvURI) {
+        var cvData;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return fetch(cvURI);
+
+              case 3:
+                cvData = _context2.sent;
+                _context2.next = 6;
+                return cvData.json();
+
+              case 6:
+                this.content = _context2.sent;
+                this.attachHeader();
+                console.log(this.content);
+                _context2.next = 14;
+                break;
+
+              case 11:
+                _context2.prev = 11;
+                _context2.t0 = _context2["catch"](0);
+                console.error(_context2.t0);
+
+              case 14:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[0, 11]]);
       }));
 
       function _importCVData(_x) {
@@ -1229,34 +1296,47 @@ var CV = /*#__PURE__*/function () {
 
       return _importCVData;
     }()
-  }, {
-    key: "_generateHeader",
-    value: function _generateHeader() {
-      var cvHeader = document.createElement('cv-header');
-      cvHeader.data = this.content.title;
-      return cvHeader;
-    }
-  }, {
-    key: "_generateHTML",
-    value: function _generateHTML() {
-      this.el.container.appendChild(this._generateHeader());
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      this.el.container.innerHTML = '';
-
-      this._generateHTML();
-
-      document.querySelector(this.parentElement).appendChild(this.el.container);
-    }
   }]);
   return CV;
-}();
+}( /*#__PURE__*/(0, _wrapNativeSuper2.default)(HTMLElement));
 
-var cv = new CV('/cv.json');
-console.log(cv);
-},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","./components/header":"src/components/header.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+window.customElements.define('web-cv', CV);
+},{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","@babel/runtime/helpers/wrapNativeSuper":"node_modules/@babel/runtime/helpers/wrapNativeSuper.js","./Header":"src/components/Header.js"}],"src/app.js":[function(require,module,exports) {
+require('./components/Header');
+
+require('./components/CV'); // class CV {
+//     constructor(cvURI, parentElement = 'body') {
+//         this.parentElement = parentElement;
+//         this._importCVData(cvURI);
+//         this.el = {};
+//         this.el.container = document.createElement('div');
+//     }
+//     async _importCVData(cvURI) {
+//         try {
+//             const cvData = await fetch(cvURI);
+//             this.content = await cvData.json();
+//             this.render();
+//         } catch (err) {
+//             console.error(err);
+//         }
+//     }
+//     _generateHeader() {
+//         const cvHeader = document.createElement('cv-header');
+//         cvHeader.data = this.content.title;
+//         return cvHeader;
+//     }
+//     _generateHTML() {
+//         this.el.container.appendChild(this._generateHeader());
+//     }
+//     render() {
+//         this.el.container.innerHTML = '';
+//         this._generateHTML();
+//         document
+//             .querySelector(this.parentElement)
+//             .appendChild(this.el.container);
+//     }
+// }
+},{"./components/Header":"src/components/Header.js","./components/CV":"src/components/CV.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1284,7 +1364,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61744" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52771" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -15,11 +15,12 @@ template.innerHTML = `
 class Header extends HTMLElement {
     constructor(data) {
         super();
+        console.log(this.getAttribute('cvTitle'));
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    connectedCallback() {
+    _renderName() {
         this.shadowRoot.querySelector('h1').innerText = `${
             this.data.firstName
         } ${
@@ -27,7 +28,13 @@ class Header extends HTMLElement {
                 ? this.data.middleName + ' ' + this.data.lastName
                 : this.data.lastName
         }`;
-        this.shadowRoot.querySelector('p').innerText = this.data.description;
+    }
+
+    connectedCallback() {
+        if (this.data) {
+            this._renderName();
+            this.shadowRoot.querySelector('p').innerText = this.data.description;
+        }
     }
 }
 
