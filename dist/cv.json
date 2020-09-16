@@ -1,65 +1,69 @@
 {
-  "title": {
-    "firstName": "Gavin",
-    "middleName": "",
-    "lastName": "Hanna",
-    "description": "Experienced full-stack developer. Experience building web applications using node/express, React + Redux (MERN stack), Python, PHP/Laravel, Angular, modern JS, CSS3 and HTML5.",
-    "role": "Web Developer",
-    "date": "February 2020"
-  },
-  "body": {
-    "experience": [
-      {
-        "company": "Xwerx",
-        "location": "Dublin",
-        "title": "Web Developer",
-        "date": {
-          "start": "10/10/2018",
-          "end": false
-        },
-        "body": [
-          {
-            "p": "Front End Developer for a number of the company’s enterprise clients, utilising a mix of development skills as listed opposite."
-          },
-          {
-            "ul": [
-              {
-                "item": "Aviva",
-                "description": "Developer for financial planning tools, supporting Aviva’s customers and brokers in Ireland and the UK."
-              },
-              {
-                "item": "Irish Government Agency (HIQA)",
-                "description": "Lead developer for national health-based survey initiative."
-              },
-              {
-                "item": "Arthur Cox",
-                "description": "Lead developer for back-office application supporting app for Ireland’s leading legal firm."
-              },
-              {
-                "item": "Arab Irish Chamber",
-                "description": "Arab Irish Chamber - Developer for document workflow application, supporting Irish exporters ship goods to the Middle East."
-              }
-            ]
-          }
+    "title": {
+        "firstName": "Gavin",
+        "middleName": "",
+        "lastName": "Hanna",
+        "description": "Experienced full-stack developer. Experience building web applications using node/express, React + Redux (MERN stack), Python, PHP/Laravel, Angular, modern JS, CSS3 and HTML5.",
+        "role": "Web Developer",
+        "date": "February 2020"
+    },
+    "body": {
+        "experience": [
+            {
+                "company": "Xwerx",
+                "location": "Dublin",
+                "title": "Web Developer",
+                "date": {
+                    "start": "10/10/2018",
+                    "end": false
+                },
+                "body": [
+                    {
+                        "type": "p",
+                        "content": "Front End Developer for a number of the company’s enterprise clients, utilising a mix of development skills as listed opposite."
+                    },
+                    {
+                        "type": "ul",
+                        "content": [
+                            {
+                                "item": "Aviva",
+                                "description": "Developer for financial planning tools, supporting Aviva’s customers and brokers in Ireland and the UK."
+                            },
+                            {
+                                "item": "Irish Government Agency (HIQA)",
+                                "description": "Lead developer for national health-based survey initiative."
+                            },
+                            {
+                                "item": "Arthur Cox",
+                                "description": "Lead developer for back-office application supporting app for Ireland’s leading legal firm."
+                            },
+                            {
+                                "item": "Arab Irish Chamber",
+                                "description": "Arab Irish Chamber - Developer for document workflow application, supporting Irish exporters ship goods to the Middle East."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "company": "Freelance",
+                "location": "Dublin",
+                "title": "Web Developer",
+                "date": {
+                    "start": 2016,
+                    "end": 2018
+                },
+                "body": [
+                    {
+                        "type": "p",
+                        "content": "Creating websites for Dublin based companies and organisations."
+                    },
+                    {
+                        "type": "p",
+                        "content": "Working closely with clients using iterative development to meet their expectations. Creating mockups based on the client’s needs, fleshing out the design and structure until the client is satisfied with the result."
+                    }
+                ]
+            }
         ]
-      },
-      {
-        "company": "Freelance",
-        "location": "Dublin",
-        "title": "Web Developer",
-        "date": {
-          "start": 2016,
-          "end": 2018
-        },
-        "body": [
-          {
-            "p": "Creating websites for Dublin based companies and organisations."
-          },
-          {
-            "p": "Working closely with clients using iterative development to meet their expectations. Creating mockups based on the client’s needs, fleshing out the design and structure until the client is satisfied with the result."
-          }
-        ]
-      }
-    ]
-  }
+    }
 }

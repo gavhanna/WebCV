@@ -12,7 +12,9 @@ class CV extends HTMLElement {
         super();
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
-        console.log(this.attributes.uri.value);
+        this.containerElement = this.shadowRoot.querySelector('article');
+        this.containerElement.innerHTML =
+            '<div class="loader">Loading...</div>';
     }
 
     async connectedCallback() {
@@ -24,15 +26,24 @@ class CV extends HTMLElement {
         header.data = this.content.title;
         this.shadowRoot.querySelector('article').appendChild(header);
     }
-    
+
+    attachBody() {
+        const body = document.createElement('cv-body');
+        body.data = this.content.body;
+        this.shadowRoot.querySelector('article').appendChild(body);
+    }
+
     async _importCVData(cvURI) {
         try {
             const cvData = await fetch(cvURI);
             this.content = await cvData.json();
+            this.containerElement.innerHTML = '';
             this.attachHeader();
+            this.attachBody();
             console.log(this.content);
         } catch (err) {
             console.error(err);
+            this.containerElement.innerHTML = `<div class="failed">Error: ${err}</div>`;
         }
     }
 }

@@ -15,7 +15,6 @@ template.innerHTML = `
 class Header extends HTMLElement {
     constructor(data) {
         super();
-        console.log(this.getAttribute('cvTitle'));
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
@@ -33,7 +32,9 @@ class Header extends HTMLElement {
     connectedCallback() {
         if (this.data) {
             this._renderName();
-            this.shadowRoot.querySelector('p').innerText = this.data.description;
+            this.shadowRoot.querySelector(
+                'p'
+            ).innerText = this.data.description;
         }
     }
 }

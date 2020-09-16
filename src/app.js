@@ -1,4 +1,5 @@
 require('./components/Header');
+require('./components/Body');
 require('./components/CV');
 
 // class CV {
@@ -36,4 +37,3 @@ require('./components/CV');
 //             .appendChild(this.el.container);
 //     }
 // }
-

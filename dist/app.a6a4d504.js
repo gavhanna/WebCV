@@ -346,7 +346,6 @@ var Header = /*#__PURE__*/function (_HTMLElement) {
 
     (0, _classCallCheck2.default)(this, Header);
     _this = _super.call(this);
-    console.log(_this.getAttribute('cvTitle'));
 
     _this.attachShadow({
       mode: 'open'
@@ -376,6 +375,106 @@ var Header = /*#__PURE__*/function (_HTMLElement) {
 }( /*#__PURE__*/(0, _wrapNativeSuper2.default)(HTMLElement));
 
 window.customElements.define('cv-header', Header);
+},{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","@babel/runtime/helpers/wrapNativeSuper":"node_modules/@babel/runtime/helpers/wrapNativeSuper.js"}],"src/components/Body.js":[function(require,module,exports) {
+"use strict";
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _wrapNativeSuper2 = _interopRequireDefault(require("@babel/runtime/helpers/wrapNativeSuper"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+var template = document.createElement('template');
+template.innerHTML = "\n    <style>\n        section {\n            color: #353535;\n        }\n    </style>\n\n    <section>\n    </section>\n";
+
+var Body = /*#__PURE__*/function (_HTMLElement) {
+  (0, _inherits2.default)(Body, _HTMLElement);
+
+  var _super = _createSuper(Body);
+
+  function Body(data) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Body);
+    _this = _super.call(this);
+
+    _this.attachShadow({
+      mode: 'open'
+    });
+
+    _this.shadowRoot.appendChild(template.content.cloneNode(true));
+
+    _this.container = _this.shadowRoot.querySelector('section');
+    return _this;
+  }
+
+  (0, _createClass2.default)(Body, [{
+    key: "_paragraph",
+    value: function _paragraph(d) {
+      return "<p>".concat(d.content, "</p>");
+    }
+  }, {
+    key: "_list",
+    value: function _list(d) {
+      return "<ul>\n            ".concat(d.content.map(function (c) {
+        return "<li><strong>".concat(c.item, "</strong> - ").concat(c.description, "</li>");
+      }), "\n        </ul>");
+    }
+  }, {
+    key: "_renderHTMLBlock",
+    value: function _renderHTMLBlock(data) {
+      switch (data.type) {
+        case 'p':
+          return this._paragraph(data);
+
+        case 'ul':
+          return this._list(data);
+
+        default:
+          return '';
+      }
+    }
+  }, {
+    key: "_renderBody",
+    value: function _renderBody() {
+      var _this2 = this;
+
+      var experience = this.data.experience;
+      experience && experience.forEach(function (exp) {
+        var div = document.createElement('div');
+        div.innerHTML = "\n                    <h3>".concat(exp.title, " - ").concat(exp.company, ", ").concat(exp.location, "</h3>\n                    <aside>").concat(exp.date.start, " - ").concat(exp.date.end || 'PRESENT', "</aside>\n                <div class=\"body-copy\">\n                    ").concat(exp.body.map(function (b) {
+          return _this2._renderHTMLBlock(b);
+        }).join(''), "\n                </div>\n                ");
+
+        _this2.container.appendChild(div);
+      });
+    }
+  }, {
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      if (this.data) {
+        console.log(this.data);
+
+        this._renderBody();
+      }
+    }
+  }]);
+  return Body;
+}( /*#__PURE__*/(0, _wrapNativeSuper2.default)(HTMLElement));
+
+window.customElements.define('cv-body', Body);
 },{"@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","@babel/runtime/helpers/wrapNativeSuper":"node_modules/@babel/runtime/helpers/wrapNativeSuper.js"}],"node_modules/regenerator-runtime/runtime.js":[function(require,module,exports) {
 var define;
 /**
@@ -1216,7 +1315,8 @@ var CV = /*#__PURE__*/function (_HTMLElement) {
 
     _this.shadowRoot.appendChild(template.content.cloneNode(true));
 
-    console.log(_this.attributes.uri.value);
+    _this.containerElement = _this.shadowRoot.querySelector('article');
+    _this.containerElement.innerHTML = '<div class="loader">Loading...</div>';
     return _this;
   }
 
@@ -1253,6 +1353,13 @@ var CV = /*#__PURE__*/function (_HTMLElement) {
       this.shadowRoot.querySelector('article').appendChild(header);
     }
   }, {
+    key: "attachBody",
+    value: function attachBody() {
+      var body = document.createElement('cv-body');
+      body.data = this.content.body;
+      this.shadowRoot.querySelector('article').appendChild(body);
+    }
+  }, {
     key: "_importCVData",
     value: function () {
       var _importCVData2 = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(cvURI) {
@@ -1272,22 +1379,25 @@ var CV = /*#__PURE__*/function (_HTMLElement) {
 
               case 6:
                 this.content = _context2.sent;
+                this.containerElement.innerHTML = '';
                 this.attachHeader();
+                this.attachBody();
                 console.log(this.content);
-                _context2.next = 14;
+                _context2.next = 17;
                 break;
 
-              case 11:
-                _context2.prev = 11;
+              case 13:
+                _context2.prev = 13;
                 _context2.t0 = _context2["catch"](0);
                 console.error(_context2.t0);
+                this.containerElement.innerHTML = "<div class=\"failed\">Error: ".concat(_context2.t0, "</div>");
 
-              case 14:
+              case 17:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 11]]);
+        }, _callee2, this, [[0, 13]]);
       }));
 
       function _importCVData(_x) {
@@ -1303,6 +1413,8 @@ var CV = /*#__PURE__*/function (_HTMLElement) {
 window.customElements.define('web-cv', CV);
 },{"@babel/runtime/regenerator":"node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/classCallCheck":"node_modules/@babel/runtime/helpers/classCallCheck.js","@babel/runtime/helpers/createClass":"node_modules/@babel/runtime/helpers/createClass.js","@babel/runtime/helpers/inherits":"node_modules/@babel/runtime/helpers/inherits.js","@babel/runtime/helpers/possibleConstructorReturn":"node_modules/@babel/runtime/helpers/possibleConstructorReturn.js","@babel/runtime/helpers/getPrototypeOf":"node_modules/@babel/runtime/helpers/getPrototypeOf.js","@babel/runtime/helpers/wrapNativeSuper":"node_modules/@babel/runtime/helpers/wrapNativeSuper.js","./Header":"src/components/Header.js"}],"src/app.js":[function(require,module,exports) {
 require('./components/Header');
+
+require('./components/Body');
 
 require('./components/CV'); // class CV {
 //     constructor(cvURI, parentElement = 'body') {
@@ -1336,7 +1448,7 @@ require('./components/CV'); // class CV {
 //             .appendChild(this.el.container);
 //     }
 // }
-},{"./components/Header":"src/components/Header.js","./components/CV":"src/components/CV.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./components/Header":"src/components/Header.js","./components/Body":"src/components/Body.js","./components/CV":"src/components/CV.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1364,7 +1476,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52771" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64678" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
