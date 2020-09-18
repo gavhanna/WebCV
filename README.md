@@ -9,3 +9,7 @@ Simple app for generating a web-based CV from a JSON file.
 1. Run `npm run dev` to spin up a simple http-server
 1. Navigate to http://localhost:8080.
 1. Profit!
+
+### Example
+
+An example of this component can be seen [here](gavhanna.github.io/WebCV)
