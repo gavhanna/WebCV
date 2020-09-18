@@ -1,8 +1,15 @@
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
+        header { 
+            width: var(--width);
+            max-width: var(--max-width);
+        }
         h1 {
-            color: coral;
+            font-size: 54px;
+        }
+        p {
+            font-family: Helvetica, Aria, sans-serif;
         }
     </style>
 

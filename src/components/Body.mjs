@@ -3,11 +3,25 @@ template.innerHTML = `
     <style>
         section {
             color: #353535;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        
+        h2, h3 {
+            text-transform: capitalize;
+            font-family: "Time New Roman", serif;
+        }
+
+        h3 > span {
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        aside {
+            font-size: 14px;
         }
     </style>
 
-    <section>
-    </section>
+    <section></section>
 `;
 
 class Body extends HTMLElement {
@@ -44,27 +58,40 @@ class Body extends HTMLElement {
     }
 
     _renderBody() {
-        const { experience } = this.data;
-        experience &&
-            experience.forEach((exp) => {
+        this.data.forEach((item) => {
+            const { section, items } = item;
+            const wrapper = document.createElement('section');
+            wrapper.innerHTML = `<h2>${section}</h2>`;
+            items.forEach((exp) => {
                 const div = document.createElement('div');
                 div.innerHTML = `
-                    <h3>${exp.title} - ${exp.company}, ${exp.location}</h3>
-                    <aside>${exp.date.start} - ${
+                        <h3>${exp.title} - <span>${exp.subtitle}</span></h3>
+                        <aside>${exp.date.start} - ${
                     exp.date.end || 'PRESENT'
                 }</aside>
-                <div class="body-copy">
-                    ${exp.body.map((b) => this._renderHTMLBlock(b)).join('')}
-                </div>
-                `;
-                this.container.appendChild(div);
+                    <div class="body-copy">
+                        ${exp.body
+                            .map((b) => this._renderHTMLBlock(b))
+                            .join('')}
+                    </div>
+                    `;
+                wrapper.appendChild(div);
             });
+            this.container.appendChild(wrapper);
+        });
+    }
+
+    _addAccentColor() {
+        this.shadowRoot.querySelectorAll('h2').forEach((el) => {
+            el.style.color = this.getAttribute('accent-color');
+        });
     }
 
     connectedCallback() {
         if (this.data) {
             console.log(this.data);
             this._renderBody();
+            this._addAccentColor();
         }
     }
 }
