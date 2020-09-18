@@ -24,9 +24,11 @@ class Body extends HTMLElement {
 
     _list(d) {
         return `<ul>
-            ${d.content.map((c) => {
-                return `<li><strong>${c.item}</strong> - ${c.description}</li>`;
-            })}
+            ${d.content
+                .map((c) => {
+                    return `<li><strong>${c.item}</strong> - ${c.description}</li>`;
+                })
+                .join('')}
         </ul>`;
     }
 
