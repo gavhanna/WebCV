@@ -1,5 +1,3 @@
-require('./Header');
-
 const template = document.createElement('template');
 template.innerHTML = `
     <article>
@@ -49,3 +47,5 @@ class CV extends HTMLElement {
 }
 
 window.customElements.define('web-cv', CV);
+
+export { CV };

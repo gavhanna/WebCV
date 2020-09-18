@@ -40,3 +40,5 @@ class Header extends HTMLElement {
 }
 
 window.customElements.define('cv-header', Header);
+
+export { Header };

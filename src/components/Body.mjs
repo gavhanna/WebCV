@@ -68,3 +68,5 @@ class Body extends HTMLElement {
 }
 
 window.customElements.define('cv-body', Body);
+
+export { Body };
