@@ -78,8 +78,60 @@ class CV extends HTMLElement {
                     `;
                 wrapper.appendChild(div);
             });
-            this.shadowRoot.querySelector('article').appendChild(wrapper);
+            this.shadowRoot.querySelector('main').appendChild(wrapper);
         });
+    }
+
+    renderContactInfo(contact) {
+        switch (contact.type) {
+            case 'email':
+                return `<a href="mailto:${contact.value}" style="color: ${
+                    this.accentColor
+                }">${contact.text || contact.value}</a>`;
+            case 'phone':
+            case 'telephone':
+                return `<a href="tel:${contact.value}" style="color: ${
+                    this.accentColor
+                }">${contact.text || contact.value}</a>`;
+            case 'link':
+                return `<a href="${contact.value}" style="color: ${
+                    this.accentColor
+                }">${contact.text || contact.value}</a>`;
+            default:
+                return '';
+        }
+    }
+
+    renderSidebarItem(item) {
+        return `
+            <h4 style="color: ${this.accentColor}">${item.title}</h4>
+            <ul>
+                ${item.items.map((i) => `<li>${i}</li>`).join('')}
+            </ul>     
+        `;
+    }
+
+    renderSidebar() {
+        this.shadowRoot.querySelector('aside.sidebar').innerHTML = `
+            ${this.content.sidebar
+                .map((item) => this.renderSidebarItem(item))
+                .join('')}
+        `;
+    }
+
+    attachMeta() {
+        this.shadowRoot.querySelector('aside.meta').innerHTML = `
+            <ul>
+                <li>${this.content.meta.date}<li>
+                <li>${this.content.meta.location}<li>
+                ${this.content.meta.contact
+                    .map(
+                        (contact) =>
+                            `<li>${this.renderContactInfo(contact)}</li>`
+                    )
+                    .join('')}
+            </ul>
+        `;
     }
 
     async _importCVData(cvURI) {
@@ -88,6 +140,9 @@ class CV extends HTMLElement {
             this.content = await cvData.json();
             this.attachHeader();
             this.attachBody();
+            this.attachMeta();
+            this.renderSidebar();
+            console.log(this.content);
         } catch (err) {
             console.error(err);
             this.containerElement.innerHTML = `<pre class="failed">Error: ${err}</pre>`;

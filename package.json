@@ -4,7 +4,7 @@
     "description": "Simple app for generating a web-based CV from a JSON file.",
     "main": "index.js",
     "scripts": {
-        "dev": "http-server -a localhost",
+        "dev": "live-server",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -19,6 +19,6 @@
     },
     "homepage": "https://github.com/gavhanna/WebCV#readme",
     "devDependencies": {
-        "http-server": "^0.12.3"
+        "live-server": "^1.2.1"
     }
 }

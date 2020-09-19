@@ -4,9 +4,52 @@
         "middleName": "",
         "lastName": "Hanna",
         "description": "Experienced full-stack developer. Experience building web applications using node/express, React + Redux (MERN stack), Python, PHP/Laravel, Angular, modern JS, CSS3 and HTML5.",
-        "role": "Web Developer",
-        "date": "February 2020"
+        "role": "Web Developer"
     },
+    "meta": {
+        "date": "February 2020",
+        "location": "Dublin, Ireland",
+        "contact": [
+            {
+                "type": "email",
+                "value": "gavhanna@gmail.com"
+            },
+            {
+                "type": "link",
+                "value": "https://linkedin.com/in/gavhanna",
+                "text": "Linkedin"
+            },
+            {
+                "type": "link",
+                "value": "https://github.com/gavhanna",
+                "text": "Github"
+            }
+        ]
+    },
+    "sidebar": [
+        {
+            "title": "Development skills",
+            "items": [
+                "HTML5 CSS3 JavaScript SASS Bootstrap",
+                "Angular, AngularJS, React",
+                "REST Git Gulp NPM",
+                "Linux Ubuntu CentOS nginx Apache PM2 Plesk",
+                "Responsive design, cross-browser development",
+                "Wordpress"
+            ]
+        },
+        {
+            "title": "Soft skills",
+            "items": [
+                "Excellent communication skills, both written and spoken",
+                "Excellent problem solving, analytical skills"
+            ]
+        },
+        {
+            "title": "Languages",
+            "items": ["English"]
+        }
+    ],
     "body": [
         {
             "section": "experience",

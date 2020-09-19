@@ -12,4 +12,4 @@ Simple app for generating a web-based CV from a JSON file.
 
 ### Example
 
-An example of this component can be seen [here](gavhanna.github.io/WebCV)
+An example of this component can be seen [here](https://gavhanna.github.io/WebCV)
