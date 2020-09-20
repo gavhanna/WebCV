@@ -1,29 +1,10 @@
+import { defaultStyles } from "../styles/default.mjs";
+
 export const tCascade = (accentColor) => `
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        button {
-            background: ${accentColor};
-            color: white;
-            padding: 10px;
-            border: none;
-        }
+        ${defaultStyles(accentColor)}
 
         article {
-            width: 900px;
-            max-width: 100%;
-            margin: 0 auto;
-            padding: 50px;
-            line-height: 1.5;
-            letter-spacing: 1.1;
             display: flex;
             flex-direction: column;
         }
@@ -51,29 +32,12 @@ export const tCascade = (accentColor) => `
             grid-column-gap: 20px;
         }
 
-        aside.sidebar ul {
-            margin-bottom: 30px;
-        }
-
-        aside.sidebar ul li {
-            margin-bottom: 10px;
-        }
-
         aside.meta, aside.sidebar {
             color: #666;
         }
 
         header p, aside.meta, aside.sidebar {
-            font-family: Helvetica, Arial, sans-serif;
-        }
-
-        section {
-            color: #353535;
-            font-family: Helvetica, Arial, sans-serif;
-        }
-
-        ul {
-            list-style: none;
+            font-family: var(--font-sans-serif);
         }
 
         header, section {
@@ -84,21 +48,12 @@ export const tCascade = (accentColor) => `
             border-bottom: 1px solid ${accentColor};
         }
 
-        section > div {
-            margin-bottom: 20px;
-        }
-
-        section p, section ul li {
-            margin-bottom: 10px;
-            color: #666;
-        }
-
         h1 {
             font-size: 60px;
             margin-top: -60px;
             margin-bottom: 20px;
             border-bottom: 5px solid ${accentColor};
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: var(--font-sans-serif);
         }
 
         h2 {
@@ -116,7 +71,7 @@ export const tCascade = (accentColor) => `
         }
 
         h4 {
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: var(--font-sans-serif);
         }
 
         h3 > span {
