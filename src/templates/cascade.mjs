@@ -46,6 +46,9 @@ export const tCascade = (accentColor) => `
         
         aside.sidebar {
             order: 4;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(200px, 1fr));
+            grid-column-gap: 20px;
         }
 
         aside.sidebar ul {
@@ -74,7 +77,11 @@ export const tCascade = (accentColor) => `
         }
 
         header, section {
-            // margin-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        section {
+            border-bottom: 1px solid ${accentColor};
         }
 
         section > div {
@@ -119,6 +126,10 @@ export const tCascade = (accentColor) => `
 
         aside {
             font-size: 14px;
+        }
+
+        h2, a {
+            color: ${accentColor};
         }
     </style>
     <p>Current theme: Cascade</p>

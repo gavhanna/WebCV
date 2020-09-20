@@ -98,7 +98,7 @@ class CV extends HTMLElement {
         this.content.body.forEach((item) => {
             const { section, items } = item;
             const wrapper = document.createElement('section');
-            wrapper.innerHTML = `<h2 style="color: ${this.accentColor}">${section}</h2>`;
+            wrapper.innerHTML = `<h2>${section}</h2>`;
             items.forEach((exp) => {
                 const div = document.createElement('div');
                 div.innerHTML = `
@@ -121,18 +121,18 @@ class CV extends HTMLElement {
     renderContactInfo(contact) {
         switch (contact.type) {
             case 'email':
-                return `<a href="mailto:${contact.value}" style="color: ${
-                    this.accentColor
-                }">${contact.text || contact.value}</a>`;
+                return `<a href="mailto:${contact.value}">${
+                    contact.text || contact.value
+                }</a>`;
             case 'phone':
             case 'telephone':
-                return `<a href="tel:${contact.value}" style="color: ${
-                    this.accentColor
-                }">${contact.text || contact.value}</a>`;
+                return `<a href="tel:${contact.value}">${
+                    contact.text || contact.value
+                }</a>`;
             case 'link':
-                return `<a href="${contact.value}" style="color: ${
-                    this.accentColor
-                }">${contact.text || contact.value}</a>`;
+                return `<a href="${contact.value}">${
+                    contact.text || contact.value
+                }</a>`;
             default:
                 return '';
         }
@@ -140,10 +140,12 @@ class CV extends HTMLElement {
 
     renderSidebarItem(item) {
         return `
-            <h4 style="color: ${this.accentColor}">${item.title}</h4>
-            <ul>
-                ${item.items.map((i) => `<li>${i}</li>`).join('')}
-            </ul>     
+            <div class="sidebar-item">
+                <h4>${item.title}</h4>
+                <ul>
+                    ${item.items.map((i) => `<li>${i}</li>`).join('')}
+                </ul>
+            </div>     
         `;
     }
 

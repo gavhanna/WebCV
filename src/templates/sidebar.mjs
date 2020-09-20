@@ -123,6 +123,10 @@ export const tSidebar = (accentColor) => `
         aside {
             font-size: 14px;
         }
+
+        h2, h4, a {
+            color: ${accentColor};
+        }
     </style>
     <p>Current theme: Sidebar</p>
     <button>Switch to Cascade</button>
