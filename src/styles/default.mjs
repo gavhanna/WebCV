@@ -1,4 +1,4 @@
-export const defaultStyles = accentColor => `
+export const defaultStyles = (accentColor) => `
 
     :host {
         --font-serif: "Time New Roman", serif;
@@ -9,6 +9,35 @@ export const defaultStyles = accentColor => `
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+    }
+
+    div.menu {
+        font-family: var(--font-sans-serif);
+    }
+
+    div.menu span {
+        border-left: 2px solid ${accentColor};
+        background-color: transparent;
+        padding: 5px 10px;
+    }
+
+    
+    div.menu ul {
+        display: none;
+    }
+    div.menu ul li {
+        background: #ddd;
+        cursor: pointer;
+        padding: 10px 10px;
+        text-transform: capitalize;
+    }
+    div.menu ul li:hover, div.menu ul li.active {
+        background: ${accentColor};
+        color: white;
+    }
+
+    div.menu:hover > ul {
+        display: block;
     }
 
     a {

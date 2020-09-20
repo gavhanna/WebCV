@@ -1,4 +1,4 @@
-import { defaultStyles } from "../styles/default.mjs";
+import { defaultStyles } from '../styles/default.mjs';
 
 export const tSidebar = (accentColor) => `
     <style>
@@ -79,8 +79,6 @@ export const tSidebar = (accentColor) => `
             color: ${accentColor};
         }
     </style>
-    <p>Current theme: Sidebar</p>
-    <button>Switch to Cascade</button>
     <article>
         <header>
             <h1></h1>
