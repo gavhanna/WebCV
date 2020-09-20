@@ -1,19 +1,55 @@
-import { templateStr } from './template.mjs';
-
-const template = document.createElement('template');
-template.innerHTML = templateStr;
+import { tSidebar } from './templates/sidebar.mjs';
+import { tCascade } from './templates/cascade.mjs';
 
 class CV extends HTMLElement {
-    constructor(cvURI, parentElement = 'body') {
+    constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
-        this.containerElement = this.shadowRoot.querySelector('article');
+        this.theme = this.getAttribute('theme');
         this.accentColor = this.getAttribute('accent-color') || 'coral';
+        this.attachShadow({ mode: 'open' });
+        this.setTheme(this.theme);
+        this.containerElement = this.shadowRoot.querySelector('article');
     }
 
     async connectedCallback() {
         await this._importCVData(this.attributes.uri.value);
+        this.attachEventHandlers();
+    }
+
+    setTheme(themeName) {
+        this.shadowRoot.innerHTML = '';
+        const theme = document.createElement('template');
+        switch (themeName) {
+            case 'sidebar':
+                theme.innerHTML = tSidebar(this.accentColor);
+                break;
+            case 'cascade':
+                theme.innerHTML = tCascade(this.accentColor);
+                break;
+
+            default:
+                break;
+        }
+        this.shadowRoot.appendChild(theme.content.cloneNode(true));
+    }
+
+    attachEventHandlers() {
+        this.shadowRoot
+            .querySelector('button')
+            .addEventListener('click', (e) => {
+                if (this.theme === 'sidebar') {
+                    this.theme = 'cascade';
+                } else {
+                    this.theme = 'sidebar';
+                }
+                this.setTheme(this.theme);
+                console.log(this.theme);
+                this.attachHeader();
+                this.attachBody();
+                this.attachMeta();
+                this.renderSidebar();
+                this.attachEventHandlers();
+            });
     }
 
     attachHeader() {

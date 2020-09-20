@@ -1,4 +1,4 @@
-export const templateStr = `
+export const tSidebar = (accentColor) => `
     <style>
         * {
             padding: 0;
@@ -8,6 +8,13 @@ export const templateStr = `
 
         a {
             text-decoration: none;
+        }
+
+        button {
+            background: ${accentColor};
+            color: white;
+            padding: 10px;
+            border: none;
         }
 
         article {
@@ -77,6 +84,11 @@ export const templateStr = `
             margin-bottom: 20px;
         }
 
+        section > div aside {
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
         section p, section ul li {
             margin-bottom: 10px;
             color: #666;
@@ -112,6 +124,8 @@ export const templateStr = `
             font-size: 14px;
         }
     </style>
+    <p>Current theme: Sidebar</p>
+    <button>Switch to Cascade</button>
     <article>
         <header>
             <h1></h1>
