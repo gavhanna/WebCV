@@ -1,4 +1,4 @@
-import { defaultStyles } from "../styles/default.mjs";
+import { defaultStyles } from '../styles/default.mjs';
 
 export const tCascade = (accentColor) => `
     <style>
@@ -87,8 +87,6 @@ export const tCascade = (accentColor) => `
             color: ${accentColor};
         }
     </style>
-    <p>Current theme: Cascade</p>
-    <button>Switch to Sidebar</button>
     <article>
         <header>
             <h1></h1>

@@ -1,5 +1,6 @@
 import { tSidebar } from './templates/sidebar.mjs';
 import { tCascade } from './templates/cascade.mjs';
+import { themes } from './utils/constants.mjs';
 
 class CV extends HTMLElement {
     constructor() {
@@ -13,17 +14,17 @@ class CV extends HTMLElement {
 
     async connectedCallback() {
         await this._importCVData(this.attributes.uri.value);
-        this.attachEventHandlers();
     }
 
     setTheme(themeName) {
+        this.theme = themeName;
         this.shadowRoot.innerHTML = '';
         const theme = document.createElement('template');
         switch (themeName) {
-            case 'sidebar':
+            case themes.SIDEBAR:
                 theme.innerHTML = tSidebar(this.accentColor);
                 break;
-            case 'cascade':
+            case themes.CASCADE:
                 theme.innerHTML = tCascade(this.accentColor);
                 break;
 
@@ -33,23 +34,22 @@ class CV extends HTMLElement {
         this.shadowRoot.appendChild(theme.content.cloneNode(true));
     }
 
+    selectTheme(e) {
+        const target = e.path[0];
+        if (target.nodeName === 'LI') {
+            console.log(target);
+            this.setTheme(target.getAttribute('data-theme'));
+            this.renderAll();
+        }
+    }
+
     attachEventHandlers() {
-        this.shadowRoot
-            .querySelector('button')
-            .addEventListener('click', (e) => {
-                if (this.theme === 'sidebar') {
-                    this.theme = 'cascade';
-                } else {
-                    this.theme = 'sidebar';
-                }
-                this.setTheme(this.theme);
-                console.log(this.theme);
-                this.attachHeader();
-                this.attachBody();
-                this.attachMeta();
-                this.renderSidebar();
-                this.attachEventHandlers();
-            });
+        this.shadowRoot.querySelector('div.menu')?.addEventListener(
+            'click',
+            function (e) {
+                this.selectTheme(e);
+            }.bind(this)
+        );
     }
 
     attachHeader() {
@@ -59,7 +59,6 @@ class CV extends HTMLElement {
             lastName,
             description,
             role,
-            date,
         } = this.content.title;
         this.shadowRoot.querySelector('header h1').innerHTML = `${firstName} ${
             middleName && middleName + ' '
@@ -67,11 +66,11 @@ class CV extends HTMLElement {
         this.shadowRoot.querySelector('header p').innerHTML = `${description}`;
     }
 
-    _bodyParagraph(d) {
+    bodyParagraph(d) {
         return `<p>${d.content}</p>`;
     }
 
-    _bodyList(d) {
+    bodyList(d) {
         return `
             <ul>
                 ${d.content
@@ -83,12 +82,34 @@ class CV extends HTMLElement {
         `;
     }
 
-    _renderHTMLBlock(data) {
+    renderMenu() {
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <span>Theme &#8691;</span>
+            <ul>
+                ${Object.entries(themes)
+                    .map(
+                        (t) =>
+                            `<li data-theme="${t[1]}" class="${
+                                this.theme === t[1] ? 'active' : ''
+                            }">${t[1]}</li>`
+                    )
+                    .join('')}
+            </ul>
+        `;
+        div.classList.add('menu');
+        div.style.position = 'absolute';
+        div.style.top = '20px';
+        div.style.left = '20px';
+        this.shadowRoot.querySelector('article').appendChild(div);
+    }
+
+    renderHTMLBlock(data) {
         switch (data.type) {
             case 'p':
-                return this._bodyParagraph(data);
+                return this.bodyParagraph(data);
             case 'ul':
-                return this._bodyList(data);
+                return this.bodyList(data);
             default:
                 return '';
         }
@@ -107,9 +128,7 @@ class CV extends HTMLElement {
                     exp.date.end || 'PRESENT'
                 }</aside>
                     <div class="body-copy">
-                        ${exp.body
-                            .map((b) => this._renderHTMLBlock(b))
-                            .join('')}
+                        ${exp.body.map((b) => this.renderHTMLBlock(b)).join('')}
                     </div>
                     `;
                 wrapper.appendChild(div);
@@ -172,14 +191,20 @@ class CV extends HTMLElement {
         `;
     }
 
+    renderAll() {
+        this.attachHeader();
+        this.attachBody();
+        this.attachMeta();
+        this.renderSidebar();
+        this.renderMenu();
+        this.attachEventHandlers();
+    }
+
     async _importCVData(cvURI) {
         try {
             const cvData = await fetch(cvURI);
             this.content = await cvData.json();
-            this.attachHeader();
-            this.attachBody();
-            this.attachMeta();
-            this.renderSidebar();
+            this.renderAll();
             console.log(this.content);
         } catch (err) {
             console.error(err);
