@@ -11,8 +11,17 @@ export const defaultStyles = (accentColor) => `
         box-sizing: border-box;
     }
 
+    #btn-print {
+        position: absolute;
+        top: 16px;
+        left: 110px;
+    }
+
     div.menu {
         font-family: var(--font-sans-serif);
+        position: absolute;
+        top: 20px;
+        left: 20px;
     }
 
     div.menu span {

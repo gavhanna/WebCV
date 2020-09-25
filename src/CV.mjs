@@ -44,12 +44,17 @@ class CV extends HTMLElement {
     }
 
     attachEventHandlers() {
-        this.shadowRoot.querySelector('div.menu')?.addEventListener(
-            'click',
-            function (e) {
+        this.shadowRoot
+            .querySelector('div.menu')
+            ?.addEventListener('click', (e) => {
                 this.selectTheme(e);
-            }.bind(this)
-        );
+            });
+
+        this.shadowRoot
+            .querySelector('#btn-print')
+            .addEventListener('click', () => {
+                this.printCV();
+            });
     }
 
     attachHeader() {
@@ -83,6 +88,9 @@ class CV extends HTMLElement {
     }
 
     renderMenu() {
+        const printBtn = document.createElement('button');
+        printBtn.id = 'btn-print';
+        printBtn.innerText = 'Print PDF';
         const div = document.createElement('div');
         div.innerHTML = `
             <span>Theme &#8691;</span>
@@ -98,10 +106,8 @@ class CV extends HTMLElement {
             </ul>
         `;
         div.classList.add('menu');
-        div.style.position = 'absolute';
-        div.style.top = '20px';
-        div.style.left = '20px';
         this.shadowRoot.querySelector('article').appendChild(div);
+        this.shadowRoot.querySelector('article').appendChild(printBtn);
     }
 
     renderHTMLBlock(data) {
@@ -210,6 +216,26 @@ class CV extends HTMLElement {
             console.error(err);
             this.containerElement.innerHTML = `<pre class="failed">Error: ${err}</pre>`;
         }
+    }
+
+    printCV() {
+        const PDF = window.open('', 'PRINT', 'height=800,width=1200');
+
+        PDF.document.write('<html><head><title>' + document.title + '</title>');
+        PDF.document.write('</head><body>');
+        PDF.document.write(this.shadowRoot.innerHTML);
+        PDF.document.write('</body></html>');
+
+        PDF.document.close(); // necessary for IE >= 10
+        PDF.focus(); // necessary for IE >= 10
+
+        PDF.print();
+        setTimeout(() => {
+            // Delay the closing of the new window by one frame
+            // Otherwise the window closes too soon and the
+            // print dialog disapears!
+            PDF.close();
+        }, 1);
     }
 }
 
