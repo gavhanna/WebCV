@@ -11,6 +11,10 @@ export const defaultStyles = (accentColor) => `
         box-sizing: border-box;
     }
 
+    article {
+        position: relative;
+    }
+
     #btn-print {
         position: absolute;
         top: 16px;
