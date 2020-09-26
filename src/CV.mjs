@@ -7,6 +7,8 @@ class CV extends HTMLElement {
         super();
         this.theme = this.getAttribute('theme');
         this.accentColor = this.getAttribute('accent-color') || 'coral';
+        this.showMenu =
+            this.getAttribute('show-menu') === 'true' ? true : false;
         this.attachShadow({ mode: 'open' });
         this.setTheme(this.theme);
         this.containerElement = this.shadowRoot.querySelector('article');
@@ -50,11 +52,12 @@ class CV extends HTMLElement {
                 this.selectTheme(e);
             });
 
-        this.shadowRoot
-            .querySelector('#btn-print')
-            .addEventListener('click', () => {
-                this.printCV();
-            });
+        this.showMenu &&
+            this.shadowRoot
+                .querySelector('#btn-print')
+                .addEventListener('click', () => {
+                    this.printCV();
+                });
     }
 
     attachHeader() {
@@ -205,7 +208,7 @@ class CV extends HTMLElement {
         this.attachBody();
         this.attachMeta();
         this.renderSidebar();
-        this.renderMenu();
+        this.showMenu && this.renderMenu();
         this.attachEventHandlers();
     }
 
