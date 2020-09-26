@@ -14,6 +14,7 @@ class CV extends HTMLElement {
 
     async connectedCallback() {
         await this._importCVData(this.attributes.uri.value);
+        console.log(this.containerElement);
     }
 
     setTheme(themeName) {
@@ -37,7 +38,6 @@ class CV extends HTMLElement {
     selectTheme(e) {
         const target = e.path[0];
         if (target.nodeName === 'LI') {
-            console.log(target);
             this.setTheme(target.getAttribute('data-theme'));
             this.renderAll();
         }
@@ -88,11 +88,13 @@ class CV extends HTMLElement {
     }
 
     renderMenu() {
+        const menuContainer = document.createElement('div');
         const printBtn = document.createElement('button');
+        const themeSelector = document.createElement('div');
+        menuContainer.id = 'menu';
         printBtn.id = 'btn-print';
         printBtn.innerText = 'Print PDF';
-        const div = document.createElement('div');
-        div.innerHTML = `
+        themeSelector.innerHTML = `
             <span>Theme &#8691;</span>
             <ul>
                 ${Object.entries(themes)
@@ -105,9 +107,10 @@ class CV extends HTMLElement {
                     .join('')}
             </ul>
         `;
-        div.classList.add('menu');
-        this.shadowRoot.querySelector('article').appendChild(div);
-        this.shadowRoot.querySelector('article').appendChild(printBtn);
+        themeSelector.classList.add('theme-selector');
+        menuContainer.appendChild(themeSelector);
+        menuContainer.appendChild(printBtn);
+        this.shadowRoot.querySelector('article').appendChild(menuContainer);
     }
 
     renderHTMLBlock(data) {

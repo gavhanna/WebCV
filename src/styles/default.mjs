@@ -15,41 +15,46 @@ export const defaultStyles = (accentColor) => `
         position: relative;
     }
 
-    #btn-print {
+    #menu {
         position: absolute;
+        display: flex;
+        align-items: center;
         top: 16px;
-        left: 110px;
+        left: 50px;
     }
 
-    div.menu {
+    #btn-print {
+
+    }
+
+    div.theme-selector {
         font-family: var(--font-sans-serif);
-        position: absolute;
-        top: 20px;
-        left: 20px;
+        position: relative;
     }
 
-    div.menu span {
+    div.theme-selector span {
         border-left: 2px solid ${accentColor};
         background-color: transparent;
         padding: 5px 10px;
     }
 
     
-    div.menu ul {
+    div.theme-selector ul {
         display: none;
+        position: absolute;
     }
-    div.menu ul li {
+    div.theme-selector ul li {
         background: #ddd;
         cursor: pointer;
         padding: 10px 10px;
         text-transform: capitalize;
     }
-    div.menu ul li:hover, div.menu ul li.active {
+    div.theme-selector ul li:hover, div.theme-selector ul li.active {
         background: ${accentColor};
         color: white;
     }
 
-    div.menu:hover > ul {
+    div.theme-selector:hover > ul {
         display: block;
     }
 
