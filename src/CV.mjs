@@ -47,7 +47,7 @@ class CV extends HTMLElement {
 
     attachEventHandlers() {
         this.shadowRoot
-            .querySelector('div.menu')
+            .querySelector('div.theme-selector')
             ?.addEventListener('click', (e) => {
                 this.selectTheme(e);
             });
