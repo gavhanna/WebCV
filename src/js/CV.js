@@ -1,6 +1,6 @@
-import { tSidebar } from './templates/sidebar.mjs';
-import { tCascade } from './templates/cascade.mjs';
-import { themes } from './utils/constants.mjs';
+import { tSidebar } from './templates/sidebar.js';
+import { tCascade } from './templates/cascade.js';
+import { themes } from './utils/themes.js';
 
 class CV extends HTMLElement {
     constructor() {
@@ -48,7 +48,7 @@ class CV extends HTMLElement {
     attachEventHandlers() {
         this.shadowRoot
             .querySelector('div.theme-selector')
-            ?.addEventListener('click', (e) => {
+            .addEventListener('click', (e) => {
                 this.selectTheme(e);
             });
 
@@ -246,5 +246,3 @@ class CV extends HTMLElement {
 }
 
 window.customElements.define('web-cv', CV);
-
-export { CV };

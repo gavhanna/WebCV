@@ -70,6 +70,10 @@
                             "type": "ul",
                             "content": [
                                 {
+                                    "item": "Capgemini ",
+                                    "description": "Front end developer (AngularJS) for large US based insurance application."
+                                },
+                                {
                                     "item": "Aviva",
                                     "description": "Developer for financial planning tools, supporting Aviva’s customers and brokers in Ireland and the UK."
                                 },
