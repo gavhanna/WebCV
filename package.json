@@ -4,7 +4,8 @@
     "description": "Simple app for generating a web-based CV from a JSON file.",
     "main": "index.js",
     "scripts": {
-        "dev": "live-server",
+        "dev": "gulp",
+        "build": "gulp build --prod",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
@@ -19,6 +20,17 @@
     },
     "homepage": "https://github.com/gavhanna/WebCV#readme",
     "devDependencies": {
-        "live-server": "^1.2.1"
+        "@babel/core": "^7.11.6",
+        "@babel/plugin-transform-runtime": "^7.11.5",
+        "@babel/preset-env": "^7.11.5",
+        "@babel/register": "^7.11.5",
+        "babel-loader": "^8.1.0",
+        "browser-sync": "^2.26.12",
+        "del": "^6.0.0",
+        "gulp": "^4.0.2",
+        "gulp-sourcemaps": "^2.6.5",
+        "gulp-uglify-es": "^2.0.0",
+        "live-server": "^1.2.1",
+        "webpack-stream": "^6.1.0"
     }
 }
