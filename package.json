@@ -1,7 +1,7 @@
 {
     "name": "WebCV",
     "version": "1.0.0",
-    "description": "Simple app for generating a web-based CV from a JSON file.",
+    "description": "Simple web component for generating a web-based CV from a JSON file.",
     "main": "index.js",
     "scripts": {
         "dev": "gulp",
