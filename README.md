@@ -6,6 +6,7 @@ A custom HTML element for generating a web-based CV from a JSON file with a sele
 
 1. Place the CV.mjs file into your project.
 1. Add the web-cv HTML element to your HTML file as follows:
+
 ```html
 <web-cv uri="cv.json" accent-color="#589bd5" theme="sidebar"></web-cv>
 ```
@@ -20,17 +21,18 @@ The `<web-cv>` element takes the following three properties:
 | `theme` | Your choice of theme | False | 'sidebar' |
 
 #### Current available themes
-- 'sidebar'
-  - Two column layout with a sidebar on the right.
-- 'cascade'
-  - Block level content elements from top to bottom.
+
+-   'sidebar'
+    -   Two column layout with a sidebar on the right.
+-   'cascade'
+    -   Block level content elements from top to bottom.
 
 ## Installation
 
 1. Clone this repo
 1. `cd` into the directory and run `npm i` to install.
 1. Run `npm run dev` to spin up a simple http-server
-1. Navigate to http://localhost:8080.
+1. Navigate to http://localhost:3000.
 1. Profit!
 
 ### Example
