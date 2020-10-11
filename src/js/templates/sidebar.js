@@ -85,7 +85,7 @@ export const tSidebar = (accentColor) => `
             <p></p>
         </header>
         <main></main>
-        <aside class="meta">date here</aside>
-        <aside class="sidebar">other shit here</aside>
+        <aside class="meta"></aside>
+        <aside class="sidebar"></aside>
     </article>
     `;
