@@ -26,115 +26,117 @@
             }
         ]
     },
-    "sidebar": [
-        {
-            "title": "Development skills",
-            "items": [
-                "HTML5 CSS3 JavaScript SASS Bootstrap",
-                "Angular, AngularJS, React",
-                "REST Git Gulp NPM",
-                "Linux Ubuntu CentOS nginx Apache PM2 Plesk",
-                "Responsive design, cross-browser development",
-                "Wordpress"
-            ]
-        },
-        {
-            "title": "Soft skills",
-            "items": [
-                "Excellent communication skills, both written and spoken",
-                "Excellent problem solving, analytical skills"
-            ]
-        },
-        {
-            "title": "Languages",
-            "items": ["English"]
-        }
-    ],
-    "body": [
-        {
-            "section": "experience",
-            "items": [
-                {
-                    "title": "Web Developer",
-                    "subtitle": "Xwerx, Dublin",
-                    "date": {
-                        "start": "10/10/2018",
-                        "end": false
-                    },
-                    "body": [
-                        {
-                            "type": "p",
-                            "content": "Front End Developer for a number of the company’s enterprise clients, utilising a mix of development skills as listed opposite."
+    "body": {
+        "primary": [
+            {
+                "section": "experience",
+                "items": [
+                    {
+                        "title": "Web Developer",
+                        "subtitle": "Xwerx, Dublin",
+                        "date": {
+                            "start": "10/10/2018",
+                            "end": false
                         },
-                        {
-                            "type": "ul",
-                            "content": [
-                                {
-                                    "item": "Capgemini / Metropolitan Life",
-                                    "description": "Front end developer (AngularJS) for large US based insurance application."
-                                },
-                                {
-                                    "item": "Aviva",
-                                    "description": "Developer for financial planning tools, supporting Aviva’s customers and brokers in Ireland and the UK."
-                                },
-                                {
-                                    "item": "Irish Government Agency (HIQA)",
-                                    "description": "Lead developer for national health-based survey initiative."
-                                },
-                                {
-                                    "item": "Arthur Cox",
-                                    "description": "Lead developer for back-office application supporting app for Ireland’s leading legal firm."
-                                },
-                                {
-                                    "item": "Arab Irish Chamber",
-                                    "description": "Arab Irish Chamber - Developer for document workflow application, supporting Irish exporters ship goods to the Middle East."
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "title": "Web Developer",
-                    "subtitle": "Freelance, Dublin",
-                    "date": {
-                        "start": 2016,
-                        "end": 2018
+                        "body": [
+                            {
+                                "type": "p",
+                                "content": "Front End Developer for a number of the company’s enterprise clients, utilising a mix of development skills as listed opposite."
+                            },
+                            {
+                                "type": "ul",
+                                "content": [
+                                    {
+                                        "item": "Capgemini / Metropolitan Life",
+                                        "description": "Front end developer (AngularJS) for large US based insurance application."
+                                    },
+                                    {
+                                        "item": "Aviva",
+                                        "description": "Developer for financial planning tools, supporting Aviva’s customers and brokers in Ireland and the UK."
+                                    },
+                                    {
+                                        "item": "Irish Government Agency (HIQA)",
+                                        "description": "Lead developer for national health-based survey initiative."
+                                    },
+                                    {
+                                        "item": "Arthur Cox",
+                                        "description": "Lead developer for back-office application supporting app for Ireland’s leading legal firm."
+                                    },
+                                    {
+                                        "item": "Arab Irish Chamber",
+                                        "description": "Arab Irish Chamber - Developer for document workflow application, supporting Irish exporters ship goods to the Middle East."
+                                    }
+                                ]
+                            }
+                        ]
                     },
-                    "body": [
-                        {
-                            "type": "p",
-                            "content": "Creating websites for Dublin based companies and organisations."
+                    {
+                        "title": "Web Developer",
+                        "subtitle": "Freelance, Dublin",
+                        "date": {
+                            "start": 2016,
+                            "end": 2018
                         },
-                        {
-                            "type": "p",
-                            "content": "Working closely with clients using iterative development to meet their expectations. Creating mockups based on the client’s needs, fleshing out the design and structure until the client is satisfied with the result."
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "section": "education",
-            "items": [
-                {
-                    "title": "National College of Ireland",
-                    "subtitle": "Higher Diploma in Science in Web Technologies (Level 8), Dublin",
-                    "date": {
-                        "start": 2018,
-                        "end": 2019
-                    },
-                    "body": [
-                        {
-                            "type": "p",
-                            "content": "Creating websites for Dublin based companies and organisations."
+                        "body": [
+                            {
+                                "type": "p",
+                                "content": "Creating websites for Dublin based companies and organisations."
+                            },
+                            {
+                                "type": "p",
+                                "content": "Working closely with clients using iterative development to meet their expectations. Creating mockups based on the client’s needs, fleshing out the design and structure until the client is satisfied with the result."
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "section": "education",
+                "items": [
+                    {
+                        "title": "National College of Ireland",
+                        "subtitle": "Higher Diploma in Science in Web Technologies (Level 8), Dublin",
+                        "date": {
+                            "start": 2018,
+                            "end": 2019
                         },
-                        {
-                            "type": "p",
-                            "content": "Working closely with clients using iterative development to meet their expectations. Creating mockups based on the client’s needs, fleshing out the design and structure until the client is satisfied with the result."
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+                        "body": [
+                            {
+                                "type": "p",
+                                "content": "Creating websites for Dublin based companies and organisations."
+                            },
+                            {
+                                "type": "p",
+                                "content": "Working closely with clients using iterative development to meet their expectations. Creating mockups based on the client’s needs, fleshing out the design and structure until the client is satisfied with the result."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "secondary": [
+            {
+                "title": "Development skills",
+                "items": [
+                    "HTML5 CSS3 JavaScript SASS Bootstrap",
+                    "Angular, AngularJS, React",
+                    "REST Git Gulp NPM",
+                    "Linux Ubuntu CentOS nginx Apache PM2 Plesk",
+                    "Responsive design, cross-browser development",
+                    "Wordpress"
+                ]
+            },
+            {
+                "title": "Soft skills",
+                "items": [
+                    "Excellent communication skills, both written and spoken",
+                    "Excellent problem solving, analytical skills"
+                ]
+            },
+            {
+                "title": "Languages",
+                "items": ["English"]
+            }
+        ]
+    }
 }
